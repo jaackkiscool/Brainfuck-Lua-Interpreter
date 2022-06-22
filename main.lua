@@ -1,7 +1,7 @@
 if not io then
     error("io is not found")
 end
-if not string.find(_VERSION, "Lua ") then
+if not string.find(_VERSION, "Lua 5") then
     error("support is provided only from lua 5x")
 end  
 local a =
