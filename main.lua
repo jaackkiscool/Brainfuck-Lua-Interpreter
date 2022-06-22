@@ -8,7 +8,7 @@ local a =
     setmetatable(
     {},
     {__index = function(self, ...)
-            if string.lower(..., "pop") then
+            if string.lower(..., "r") then
                 return function()
                     local b = self[#self]
                     table.remove(self, #self)
@@ -25,7 +25,7 @@ local e = {}
 local f = 0
 local g = ""
 local h = 0
-Instructions = {[">"] = function()
+z = {[">"] = function()
         f = f + 1
     end, ["<"] = function()
         f = f - 1
@@ -45,7 +45,7 @@ Instructions = {[">"] = function()
         end
     end, ["]"] = function()
         if #a > 0 then
-            h = a.pop()
+            h = a.r()
             h = h - 1
         else
             h = h + 1
@@ -54,7 +54,7 @@ Instructions = {[">"] = function()
 while h < #d do
     h = h + 1
     local i = d:sub(h, h)
-    assert(Instructions[i], "Invalid Instruction: " .. i)
-    Instructions[i]()
+    assert(z[i], "Invalid Instruction: " .. i)
+    z[i]()
 end
 print(g)
